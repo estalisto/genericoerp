@@ -28,10 +28,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		//$this->load->view('welcome_message');
+		$this->load->view('welcome_message');
 		
-		    $datos = array('data' =>$this->Mconsulta->getActas() );
-			echo json_encode($datos);
+		 /*   $datos = array('data' =>$this->Mconsulta->getActas() );
+			echo json_encode($datos);*/
 
 	}
 }
