@@ -1,11 +1,9 @@
 <?php
 if (!isset($this->session->userdata['logged_in'])) {
 
-header("location: http://localhost:82/genericoerp/index.php/login");
+header("location: ".base_url()."index.php/login");
 }
 ?>
-
-
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
