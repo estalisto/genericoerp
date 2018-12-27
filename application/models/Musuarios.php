@@ -1,7 +1,5 @@
-	<?php
-/**
-* 
-*/
+<?php
+
 class Musuarios extends CI_Model
 {
 	
@@ -15,7 +13,7 @@ class Musuarios extends CI_Model
                 $query = $this->db->select('*');
 		$query = $this->db->from('am_usuarios');
                 $query = $this->db->where('id_usuario',$dataUser['usuario']);
-                $query = $this->db->where('palabra_clave',$dataUser['password']);
+                $query = $this->db->where('palabra_clave',md5($dataUser['password']));
 		$query=$this->db->get();
                 if ($query->num_rows() == 1) {
                     return $query->result_array();

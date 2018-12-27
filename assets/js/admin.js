@@ -15,7 +15,7 @@ function creaMultaRiot() {
         idActa: idActa
     });
 }
-
+/*
 $.ajax({
     type: "POST",
     url: "data/obtieneListaPlanillas.php",
@@ -23,7 +23,7 @@ $.ajax({
     {
         $('.selector-planillas select').html(response).fadeIn();
     }
-});
+});*/
 
 
 function obtieneOrdenesTrabajo() {
