@@ -117,8 +117,8 @@ header("location: http://localhost:82/genericoerp/index.php/login");
                   </a>
                 </div>
                 <div class="pull-left">
-                  <a id="changePass" href="cambiarContrasenia.php"><i class="fa fa-key text-blue"></i> 
-		  <span>Cambiar contraseña</span></a>
+                  <a id="changePass" href="<?php echo $base_url2;?>index.php/cambiarcontrasenia"><i class="fa fa-key text-blue"></i> 
+		              <span>Cambiar contraseña</span></a>
                 </div>
               </li>
             </ul>

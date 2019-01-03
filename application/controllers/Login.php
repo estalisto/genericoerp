@@ -12,25 +12,10 @@ class Login extends CI_Controller {
         $this->load->library('session');
     }
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+
 	public function index()   
 	{
-            /*$datos = array('instancias' =>$this->Mambientes->getInstanciasaAll(),
-                            'base_url2'=>"http://localhost:82/genericoerp/");*/
+
             $datos=$this->misDatos();
             $this->load->view('frm_login',$datos);
 
@@ -38,24 +23,32 @@ class Login extends CI_Controller {
 	}
         public function valida_usuario()                  
 	{
-            //echo "Login";
+            $this->load->library('form_validation');
             $dataUser['usuario'] = $this->input->post('username');
             $dataUser['password'] = $this->input->post('password');
             $dataUser['idInstancia'] = $this->input->post('idInstancia');
             
-           $data = $this->Musuarios->getVerificaUser($dataUser);
-           if($data){         
-                $this->session->set_userdata('logged_in', $dataUser);
-                //$this->load->view('admin_page');
-              redirect(base_url().'index.php/liquidaciones/home'); 
-           }else{
-              $dataUser['mensaje']="usuario invalido"; 
-              $datos['mensaje']="usuario invalido"; 
-              $datos['instancias']= $this->Mambientes->getInstanciasaAll(); 
-              $datos['base_url2']=base_url();            
-              $this->load->view('frm_login',$datos);
-           }
+            
+            if ($dataUser['idInstancia'] == 0) {
+            echo "<script>alert('Debe seleccionar la Instancia.');</script>";
+            
+            }else{               
+                    
+                $data = $this->Musuarios->getVerificaUser($dataUser);
+                if($data){         
+                     $this->session->set_userdata('logged_in', $dataUser);
+                   redirect(base_url().'index.php/liquidaciones/home'); 
+                }else{
+                   $dataUser['mensaje']="usuario invalido"; 
+                   $datos['mensaje']="usuario invalido"; 
+                   $datos['instancias']= $this->Mambientes->getInstanciasaAll(); 
+                   $datos['base_url2']=base_url();            
+                   $this->load->view('frm_login',$datos);
+                }
 
+            }
+            $this->index();
+        
 
 	}
         public function logueado()   
