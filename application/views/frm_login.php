@@ -1,7 +1,7 @@
 <?php
 if (isset($this->session->userdata['logged_in'])) {
 
-header("location: http://localhost:82/genericoerp/index.php/liquidaciones/home");
+    header("location: ".base_url()."/index.php/liquidaciones/home"); 
 }
 ?>
 
@@ -32,7 +32,7 @@ header("location: http://localhost:82/genericoerp/index.php/liquidaciones/home")
             <h1 align = "center" style = "color: #21618c ;" ><FONT SIZE = 20><FONT FACE = "Times New Roman">Liquidaciones</FONT></FONT></h1>
             <div class = "col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 ">               
                 <br>
-                <form method = "post" action="http://localhost:82/genericoerp/index.php/login/valida_usuario"> 
+                <form method = "post" action="<?php echo base_url();?>index.php/login/valida_usuario"> 
                     <div >
         
                     <div class = "form-group has-feedback">
