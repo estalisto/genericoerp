@@ -29,37 +29,24 @@ class CambiarContrasenia extends CI_Controller{
     }
         
     public function valida() {
-        
-        $dataUser['usuario'] = $this->input->post('usuario');
-        $dataUser['clave_actual'] = $this->input->post('clave_actual');
-        $dataUser['nueva_clave'] = $this->input->post('nueva_clave');
-        $dataUser['repite_clave'] = $this->input->post('repite_clave');
-
-        $this->load->library('form_validation');
-        $dataUser['usuario'] = $this->input->post('username');
-        $dataUser['password'] = $this->input->post('password');
-        $dataUser['idInstancia'] = $this->input->post('idInstancia');
-        
-        
-        if ($dataUser['idInstancia'] == 0) {
-        echo "<script>alert('Debe seleccionar la Instancia.');</script>";
-        
-        }else{               
-                
-            $data = $this->Musuarios->getVerificaUser($dataUser);
-            if($data){         
-                 $this->session->set_userdata('logged_in', $dataUser);
-               redirect(base_url().'index.php/liquidaciones/home'); 
+       
+        $dataUser['usuario'] = $_POST['usuario'];
+        $dataUser['password'] = $_POST['clave'];
+        $dataUser['nueva_clave'] = $_POST['new_key'];
+        $dataUser['repite_clave'] = $_POST['repete_key'];
+        if ($dataUser['nueva_clave']==$dataUser['repite_clave']){
+            $data = $this->Musuarios->getValidaUsuario($dataUser);
+            if($data){                
+                $list= $this->Musuarios->setRegistrarNuevaContrasenia($dataUser);   
+                echo $list;                 
             }else{
-               $dataUser['mensaje']="usuario invalido"; 
-               $datos['mensaje']="usuario invalido"; 
-               $datos['instancias']= $this->Mambientes->getInstanciasaAll(); 
-               $datos['base_url2']=base_url();            
-               $this->load->view('frm_login',$datos);
+                    echo "Usuario y Contraseña Incorrecta...";  
             }
-
+        
         }
-        $this->index();
+
+       return; 
+        
 
   }
 

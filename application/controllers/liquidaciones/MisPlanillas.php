@@ -6,6 +6,7 @@ class Misplanillas extends CI_Controller{
         $this->load->model('Mconsulta');
         $this->load->model('Mambientes');
         $this->load->model('Musuarios');
+        $this->load->model('Mparametros');        
         $this->load->library('session');
        
     }
@@ -24,8 +25,21 @@ class Misplanillas extends CI_Controller{
     public function misDatos() {
           $datos['mensaje']="usuario invalido"; 
           $datos['instancias']= $this->Mambientes->getInstanciasaAll(); 
-          $datos['base_url2']="http://localhost:82/genericoerp/";     
+          $datos['base_url2']=base_url();     
         return $datos;
+    }
+    public function CregistraParametros(){
+        
+        $parametros['listo']="ok";
+        $result = $this->Mparametros->setRegistraParametro($param);
+        if($parametros>0){
+        echo "Registrado Exitosamente...";
+        }else{
+                    echo "Problemas para registrar el Parametro";
+
+        }
+        
+        return ;
     }
         
 

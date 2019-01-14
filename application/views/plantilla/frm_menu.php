@@ -24,7 +24,7 @@
                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                    </a> 
                    <ul class="treeview-menu">
-                       <li><a href="#" ><i class="fa fa-circle-o"></i>Cambio de Contraseña</a></li>                       
+                       <li><a href="<?php echo $base_url2;?>index.php/cambiarcontrasenia" ><i class="fa fa-circle-o"></i>Cambio de Contraseña</a></li>                       
                        <li><a href="#" ><i class="fa fa-circle-o"></i>Asignar Modulo/Roles</a></li>
                        <li><a href="#" ><i class="fa fa-circle-o"></i>Roles y Perfiles</a></li>
                        
@@ -53,7 +53,7 @@
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a> 
                 <ul class="treeview-menu">
-                    <li><a href="#" ><i class="fa fa-circle-o"></i>Parámetros Planillas WS</a></li>
+                    <li><a href="<?php echo $base_url2;?>index.php/liquidaciones/misplanillas" ><i class="fa fa-circle-o"></i>Parámetros Planillas WS</a></li>
                     <li><a href="#" ><i class="fa fa-circle-o"></i>Mis Planillas OT</a></li>
                     <li><a href="#" ><i class="fa fa-circle-o"></i>Mis Actas</a></li>
                     <li><a href="#" ><i class="fa fa-circle-o"></i>Liquidaciones</a></li>
